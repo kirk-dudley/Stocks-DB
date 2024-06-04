@@ -1,0 +1,1 @@
+type *.sql > All_Procs.txt
