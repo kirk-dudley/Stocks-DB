@@ -1,0 +1,1456 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2024 9:28:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LEVIATHAN"
+  DTS:CreatorName="LEVIATHAN\kirks"
+  DTS:DTSID="{A68A7208-989B-4AE6-873F-93633D71816C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EOD Data Exchanges"
+  DTS:PackageType="5"
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{6F1035AE-6A6C-4055-9F21-19853307C05B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ExchangeList.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{49E0C35B-14E9-4B77-B99D-88E6DB3FB8DC}"
+      DTS:ObjectName="ExchangeList.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\Stock_Data\EODData - Dailys\ExchangeList.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LEVIATHAN.Stocks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{00F318E2-6C75-42B5-92E0-B914E3A13194}"
+      DTS:ObjectName="LEVIATHAN.Stocks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LEVIATHAN;Initial Catalog=Stocks;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{00F318E2-6C75-42B5-92E0-B914E3A13194}LEVIATHAN.Stocks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F1A65364-C8E4-4961-8F62-FEF24B9FA3AE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varChangedDate">
+      <DTS:VariableValue
+        DTS:DataType="7">5/28/2024 3:21:09 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{48B8EB60-149D-4CF2-83E7-04E0D321BB0A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFailPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Stock_Data\Error\EODData\Exchanges</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6A82F70B-68BC-4D9F-AB98-251BF4E6AD20}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFIleName">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Stock_Data\EODData\EODData - Dailys\ExchangeList.xml</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5EBF38A1-EDFE-4F83-A944-2B77F412F877}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFPK">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0B379BB9-48EC-48B8-BF8C-5C4C2C43C371}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varSRPK">
+      <DTS:VariableValue
+        DTS:DataType="3">4</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5CBE94DA-A0B4-4058-99A9-BD0BAD226796}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varSuccessPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Stock_Data\Archived\EODData\Exchanges</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute Add_Stage_EOD_Exchanges"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A1D2DA03-A7D1-4205-908D-FA332DFDE4E2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Add_Stage_EOD_Exchanges"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00F318E2-6C75-42B5-92E0-B914E3A13194}"
+          SQLTask:SqlStatementSource="Add_Stage_EOD_Exchanges" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Fail Error"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{E428C59A-21BD-4B91-BED5-DA04A1975E29}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fail Error"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="MoveFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::varFIleName"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::varFailPath"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get File ID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8C166C61-58DD-4C7A-9217-BAC50F4233D7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get File ID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00F318E2-6C75-42B5-92E0-B914E3A13194}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Get_File_IDs ?,?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::varFPK" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="1"
+            SQLTask:DtsVariableName="User::varChangedDate" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::varFIleName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="260" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::varSRPK"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sucees Archive"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{661005D2-0DF3-43D9-BC89-A88027DB347D}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sucees Archive"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="MoveFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::varFIleName"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::varSuccessPath"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table Stage_EOD_Exchanges"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ECAE6EED-98CB-41C2-9310-DDEA1B25C11C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table Stage_EOD_Exchanges"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00F318E2-6C75-42B5-92E0-B914E3A13194}"
+          SQLTask:SqlStatementSource="Truncate Table Stage_EOD_Exchanges" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\XML Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C68CE0DA-B662-4D16-86B3-736328047E59}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="XML Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\XML Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Advances]"
+                      cachedDataType="ui4"
+                      cachedName="Advances"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Advances]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Declines]"
+                      cachedDataType="ui2"
+                      cachedName="Declines"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Declines]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[ChangedDate]"
+                      cachedDataType="date"
+                      cachedName="ChangedDate"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[ChangedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Advances]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Advances]"
+                      name="Copy of Advances"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Advances]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Declines]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Declines]"
+                      name="Copy of Declines"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Declines]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ChangedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ChangedDate]"
+                      name="Copy of ChangedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[ChangedDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\XML Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\XML Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\XML Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[F_PK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[F_PK]"
+                      name="F_PK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varFPK]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varFPK]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[ChangedDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[ChangedDate]"
+                      name="ChangedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varChangedDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varChangedDate]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[SR_PK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[SR_PK]"
+                      name="SR_PK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varSRPK]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varSRPK]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\XML Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\XML Data Flow Task\SQL Server Destination"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="SQL Server Destination"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[dbo].[Stage_EOD_Exchanges]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\XML Data Flow Task\SQL Server Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LEVIATHAN.Stocks]"
+                  connectionManagerRefId="Package.ConnectionManagers[LEVIATHAN.Stocks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[LastTradeDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastTradeDateTime"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[LastTradeDateTime]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[LastTradeDateTime]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Currency]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Currency"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Currency]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Currency]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Suffix]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Suffix"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Suffix]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Suffix]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[TimeZone]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TimeZone"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Timezone]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[TimeZone]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[IsIntraday]"
+                      cachedDataType="bool"
+                      cachedName="IsIntraday"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[IsIntraday]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[IsIntraday]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Advances]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Advances"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Advances]"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Advances]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Declines]"
+                      cachedDataType="i2"
+                      cachedName="Copy of Declines"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Declines]"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Declines]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[SR_PK]"
+                      cachedDataType="i4"
+                      cachedName="SR_PK"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_SR_FK]"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[SR_PK]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[F_PK]"
+                      cachedDataType="i4"
+                      cachedName="F_PK"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_F_FK]"
+                      lineageId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[F_PK]" />
+                    <inputColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of ChangedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of ChangedDate"
+                      externalMetadataColumnId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_Changed_Date]"
+                      lineageId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ChangedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_PK]"
+                      dataType="i4"
+                      name="SEE_PK" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_Changed_By]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEE_Changed_By" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_Changed_Date]"
+                      dataType="dbTimeStamp"
+                      name="SEE_Changed_Date" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_SR_FK]"
+                      dataType="i4"
+                      name="SEE_SR_FK" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[SEE_F_FK]"
+                      dataType="i4"
+                      name="SEE_F_FK" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[LastTradeDateTime]"
+                      dataType="dbTimeStamp"
+                      name="LastTradeDateTime" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="255"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Advances]"
+                      dataType="i4"
+                      name="Advances" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Declines]"
+                      dataType="i2"
+                      name="Declines" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Suffix]"
+                      dataType="wstr"
+                      length="255"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Timezone]"
+                      dataType="wstr"
+                      length="255"
+                      name="Timezone" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[IsIntraday]"
+                      dataType="bool"
+                      name="IsIntraday" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\XML Data Flow Task\XML Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+              name="XML Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                <property
+                  dataType="System.String"
+                  description="The XML data used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLData">D:\Stock_Data\EODData\EODData - Dailys\ExchangeList.xml</property>
+                <property
+                  dataType="System.String"
+                  description="The variable used by the XML source adapter to specify XML data."
+                  name="XMLDataVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how the XML source adapter gets XML data."
+                  name="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The XML schema definition used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLSchemaDefinition">D:\Stock_Data\EODData\EODData - Dailys\ExchangeList.xsd</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Identifies whether or not to use inline schema."
+                  name="UseInlineSchema">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how XML integer types are mapped."
+                  name="XMLIntegerMapping"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE]"
+                  name="EXCHANGE">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID">EXCHANGE</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Code]"
+                      length="255"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[LastTradeDateTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[LastTradeDateTime]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[LastTradeDateTime]"
+                      name="LastTradeDateTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Country]"
+                      length="255"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Currency]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Currency]"
+                      length="255"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Currency]"
+                      name="Currency"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Advances]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Advances]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Advances]"
+                      name="Advances"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Declines]"
+                      dataType="ui2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Declines]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Declines]"
+                      name="Declines"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Suffix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Suffix]"
+                      length="255"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[Suffix]"
+                      name="Suffix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[TimeZone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[TimeZone]"
+                      length="255"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[TimeZone]"
+                      name="TimeZone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[IsIntraday]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[IsIntraday]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].Columns[IsIntraday]"
+                      name="IsIntraday"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Code">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[LastTradeDateTime]"
+                      dataType="dbTimeStamp"
+                      name="LastTradeDateTime">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.DateTime</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="255"
+                      name="Currency">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Advances]"
+                      dataType="ui4"
+                      name="Advances">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.UInt32</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Declines]"
+                      dataType="ui2"
+                      name="Declines">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.UInt16</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[Suffix]"
+                      dataType="wstr"
+                      length="255"
+                      name="Suffix">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[TimeZone]"
+                      dataType="wstr"
+                      length="255"
+                      name="TimeZone">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE].ExternalColumns[IsIntraday]"
+                      dataType="bool"
+                      name="IsIntraday">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.Boolean</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output]"
+                  isErrorOut="true"
+                  name="EXCHANGE Error Output">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID">EXCHANGE</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Code]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Code]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Name]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Name]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[LastTradeDateTime]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[LastTradeDateTime]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[LastTradeDateTime]"
+                      name="LastTradeDateTime" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Country]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Country]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Currency]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Currency]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Currency]"
+                      name="Currency" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Advances]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Advances]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Advances]"
+                      name="Advances" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Declines]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Declines]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Declines]"
+                      name="Declines" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Suffix]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Suffix]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[Suffix]"
+                      name="Suffix" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[TimeZone]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[TimeZone]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[TimeZone]"
+                      name="TimeZone" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[IsIntraday]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[IsIntraday]"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[IsIntraday]"
+                      name="IsIntraday" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Code]"
+                      dataType="nText"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Name]"
+                      dataType="nText"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[LastTradeDateTime]"
+                      dataType="nText"
+                      name="LastTradeDateTime" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Country]"
+                      dataType="nText"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Currency]"
+                      dataType="nText"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Advances]"
+                      dataType="nText"
+                      name="Advances" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Declines]"
+                      dataType="nText"
+                      name="Declines" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[Suffix]"
+                      dataType="nText"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[TimeZone]"
+                      dataType="nText"
+                      name="TimeZone" />
+                    <externalMetadataColumn
+                      refId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE Error Output].ExternalColumns[IsIntraday]"
+                      dataType="nText"
+                      name="IsIntraday" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\XML Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\XML Data Flow Task\SQL Server Destination.Inputs[SQL Server Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\XML Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\XML Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\XML Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\XML Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\XML Data Flow Task.Paths[EXCHANGE]"
+              endId="Package\XML Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="EXCHANGE"
+              startId="Package\XML Data Flow Task\XML Source.Outputs[EXCHANGE]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7B9F994D-B4C9-4027-A089-B5DB64819DC8}"
+      DTS:From="Package\XML Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sucees Archive" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6B539E1F-0A26-4D44-BD19-005980FFC1C3}"
+      DTS:From="Package\XML Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Fail Error"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1773AA90-D99C-4186-9F1A-0259A1DE6579}"
+      DTS:From="Package\Truncate Table Stage_EOD_Exchanges"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Get File ID" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{EE9BE4C7-EE20-4E5B-8636-D25C266A1DED}"
+      DTS:From="Package\Sucees Archive"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Execute Add_Stage_EOD_Exchanges" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{BAC7538B-2C0B-48E0-B4F9-196FEBCEDEE3}"
+      DTS:From="Package\Get File ID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\XML Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Execute Add_Stage_EOD_Exchanges"
+          TopLeft="162,453" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Fail Error"
+          TopLeft="340,333" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Get File ID"
+          TopLeft="188,103" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Sucees Archive"
+          TopLeft="141,331" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Truncate Table Stage_EOD_Exchanges"
+          TopLeft="188,15" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\XML Data Flow Task"
+          TopLeft="178,204" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="239.666666666667,246">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.1666666666667,85"
+              Start="0,0"
+              End="-21.1666666666667,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.446878422782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.446878422782"
+                    Point2="0,34.446878422782"
+                    Point3="-4,34.446878422782" />
+                  <mssgle:LineSegment
+                    End="-17.1666666666667,34.446878422782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.1666666666667,34.446878422782"
+                    Point2="-21.1666666666667,34.446878422782"
+                    Point3="-21.1666666666667,38.446878422782" />
+                  <mssgle:LineSegment
+                    End="-21.1666666666667,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="297.333333333333,246">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.666666666667,87"
+              Start="0,0"
+              End="104.666666666667,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2573932092004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.2573932092004"
+                    Point2="0,35.2573932092004"
+                    Point3="4,35.2573932092004" />
+                  <mssgle:LineSegment
+                    End="100.666666666667,35.2573932092004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100.666666666667,35.2573932092004"
+                    Point2="104.666666666667,35.2573932092004"
+                    Point3="104.666666666667,39.2573932092004" />
+                  <mssgle:LineSegment
+                    End="104.666666666667,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="37.0919856770833,40.2573932092004,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="273,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="218.5,373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.5,80"
+              Start="0,0"
+              End="28.5,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="24.5,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.5,40"
+                    Point2="28.5,40"
+                    Point3="28.5,44" />
+                  <mssgle:LineSegment
+                    End="28.5,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="270.75,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\XML Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\XML Data Flow Task\Derived Column"
+          TopLeft="189,151" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\XML Data Flow Task\XML Source"
+          TopLeft="198,61" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\XML Data Flow Task\Data Conversion"
+          TopLeft="191,257" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\XML Data Flow Task\SQL Server Destination"
+          TopLeft="178,340" />
+        <EdgeLayout
+          Id="Package\XML Data Flow Task.Paths[EXCHANGE]"
+          TopLeft="267.75,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\XML Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="269.75,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\XML Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="273.25,299">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\XML Data Flow Task\SQL Server Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

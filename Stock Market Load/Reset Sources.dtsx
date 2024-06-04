@@ -1,0 +1,283 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/28/2024 8:09:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LEVIATHAN"
+  DTS:CreatorName="LEVIATHAN\kirks"
+  DTS:DTSID="{492A3AD6-438F-4EB4-A430-34289A6323F9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Reset Sources"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{9D59D5A5-2277-4D4B-B3E4-B6C509C2E4D8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Bitcoin]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{AA47350D-5560-49FB-AE73-B16219F3FC76}"
+      DTS:ObjectName="Bitcoin">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\Kaggle\Bitcoin" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BitCoin Unzipped]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F2DBBA66-4F4C-4D75-9CA1-1521AB03F2A5}"
+      DTS:ObjectName="BitCoin Unzipped">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\Kaggle\BitCoin Unzipped" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EODData - Dailys]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{3A48CD17-7ECE-46AD-A22D-CB91302F147A}"
+      DTS:ObjectName="EODData - Dailys">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\EODData\EODData - Dailys" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EODData - Dailys - Backup]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0ABC8114-FA05-4103-95F7-534D7F2746F2}"
+      DTS:ObjectName="EODData - Dailys - Backup">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\EODData\EODData - Dailys - Backup" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EODData Manual - Symbols]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{E623487F-7D63-4509-9743-51AA2C4F57B3}"
+      DTS:ObjectName="EODData Manual - Symbols">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\EODData\EODData Manual - Symbols" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EODData Manual - Symbols - Copy]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F93F9D07-D456-43C8-8BA3-1B3442C828B2}"
+      DTS:ObjectName="EODData Manual - Symbols - Copy">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\EODData\EODData Manual - Symbols - Copy" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EODData_Historic_Zip]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{ED4100B2-5D74-461B-B773-E9153E2791FC}"
+      DTS:ObjectName="EODData_Historic_Zip">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\EODData\EODData_Historic_Zip" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EODData_Historic_Zip Backup]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2B317AE3-BFD6-4415-90C4-DFC2DAC32DCA}"
+      DTS:ObjectName="EODData_Historic_Zip Backup">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\EODData\EODData_Historic_Zip Backup" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Stock-ETFs Unzipped]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6FEDA6F6-EF38-4E8D-8932-F49FA492E638}"
+      DTS:ObjectName="Stock-ETFs Unzipped">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\Kaggle\Stock-ETFs Unzipped" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Stocks]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{BFD233DA-BEC6-4E9A-AF95-F1BCBC9A58CF}"
+      DTS:ObjectName="Stocks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\Stock_Data\Kaggle\Stocks" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0469FC96-4C87-4DBD-AB88-4396FDBC15F4}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\EODData  -Dailys"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{F38E6FC3-6D72-45F1-BCAB-B79110806B2B}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EODData  -Dailys"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="CopyDirectory"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{0ABC8114-FA05-4103-95F7-534D7F2746F2}"
+              TaskDestinationPath="{3A48CD17-7ECE-46AD-A22D-CB91302F147A}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\EODData_Historic_Zip"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{0682BD9B-4AF2-4CAE-9778-E17018D26B4E}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EODData_Historic_Zip"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="CopyDirectory"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{2B317AE3-BFD6-4415-90C4-DFC2DAC32DCA}"
+              TaskDestinationPath="{ED4100B2-5D74-461B-B773-E9153E2791FC}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Kaggle Bitcoin"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{32C58FA7-3BDF-4043-8DD3-2853D1E346FB}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Kaggle Bitcoin"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="CopyDirectory"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{F2DBBA66-4F4C-4D75-9CA1-1521AB03F2A5}"
+              TaskDestinationPath="{AA47350D-5560-49FB-AE73-B16219F3FC76}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Kaggle Stocks"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{B1FC445E-9D5C-4141-96D4-698EA0A55973}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Kaggle Stocks"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="CopyDirectory"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{6FEDA6F6-EF38-4E8D-8932-F49FA492E638}"
+              TaskDestinationPath="{BFD233DA-BEC6-4E9A-AF95-F1BCBC9A58CF}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\ODData Manual - Symbols"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{8F00D8F9-9704-403C-8FB6-EF2B48E4E146}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ODData Manual - Symbols"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="CopyDirectory"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="{F93F9D07-D456-43C8-8BA3-1B3442C828B2}"
+              TaskDestinationPath="{E623487F-7D63-4509-9743-51AA2C4F57B3}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Sequence Container\EODData  -Dailys"
+          TopLeft="65,42" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Sequence Container\EODData_Historic_Zip"
+          TopLeft="66,127" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Sequence Container\Kaggle Bitcoin"
+          TopLeft="75,214" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Sequence Container\Kaggle Stocks"
+          TopLeft="313,133" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Sequence Container\ODData Manual - Symbols"
+          TopLeft="311,46" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="571,315"
+          Size="571,358"
+          Id="Package\Sequence Container"
+          TopLeft="151,79" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

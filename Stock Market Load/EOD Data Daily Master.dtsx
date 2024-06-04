@@ -1,0 +1,369 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/23/2024 10:14:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LEVIATHAN"
+  DTS:CreatorName="LEVIATHAN\kirks"
+  DTS:DTSID="{D2D2B204-BF20-4425-9445-DDA278B55EA3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EOD Data Daily Master"
+  DTS:PackageType="5"
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{34EF4D0D-70E9-4B61-98F0-D4A2AC66DB8B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LEVIATHAN.Stocks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{00E446B3-ECF0-40A4-B9A8-082903DBEB1A}"
+      DTS:ObjectName="LEVIATHAN.Stocks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LEVIATHAN;Initial Catalog=Stocks;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-EOD Data Master-{00E446B3-ECF0-40A4-B9A8-082903DBEB1A}LEVIATHAN.Stocks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AE4C2D33-E1F9-44F4-B828-0738056231F9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;-ExecutionPolicy Unrestricted -command \&quot;D:\\Stock_Data\\PowerShell\\Sort_Unzip_Archive.ps1&quot; + &quot;\&quot;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varUnzipPS">
+      <DTS:VariableValue
+        DTS:DataType="8">-ExecutionPolicy Unrestricted -command "D:\Stock_Data\PowerShell\Sort_Unzip_Archive.ps1"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute Add_Stage_EOD_Daily"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A28C974F-3930-4730-A7D1-368A7DCFA99F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Add_Stage_EOD_Daily"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00E446B3-ECF0-40A4-B9A8-082903DBEB1A}"
+          SQLTask:SqlStatementSource="EXECUTE Add_Stage_EOD_Daily" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\NoOpenInt"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Run the NoOpenInt package"
+      DTS:DTSID="{1219012B-D52A-4218-9701-B57D70411642}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="NoOpenInt"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>EOD Data Daily No OpenInt.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PoSh Filesystem EOD Daily Sort"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Execute Process Task"
+      DTS:DTSID="{FADB0644-7FCB-4318-BD64-167598089498}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PoSh Filesystem EOD Daily Sort"
+      DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+          Arguments="-ExecutionPolicy Unrestricted -command &quot;D:\Stock_Data\PowerShell\EOD_Daily_Sort.ps1&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Stage_EOD_Daily"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BB274F4F-0FF2-4C43-9B8F-9C1566107F61}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Stage_EOD_Daily"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00E446B3-ECF0-40A4-B9A8-082903DBEB1A}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Stage_EOD_Daily" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WithOpenInt"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute the WithOpenInt package"
+      DTS:DTSID="{B48CE733-68CD-4DCF-A336-90FBAA76CE09}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WithOpenInt"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>EOD Data Daily with Openint.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AE896AD6-D748-4DCE-951A-9C5F4A3D2030}"
+      DTS:From="Package\Truncate Stage_EOD_Daily"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\PoSh Filesystem EOD Daily Sort" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E13B2132-A059-440F-85D5-89722F0AF668}"
+      DTS:From="Package\PoSh Filesystem EOD Daily Sort"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\NoOpenInt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{7AF32AA2-B0BA-4AB5-A8AA-16757A31B949}"
+      DTS:From="Package\NoOpenInt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Execute Add_Stage_EOD_Daily" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{190AD254-746F-4C10-A1DA-38441775F1FB}"
+      DTS:From="Package\WithOpenInt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Execute Add_Stage_EOD_Daily" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{47F03D7C-197B-4239-A92B-1F9889309CC0}"
+      DTS:From="Package\PoSh Filesystem EOD Daily Sort"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\WithOpenInt" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Execute Add_Stage_EOD_Daily"
+          TopLeft="183.5,311.5" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\NoOpenInt"
+          TopLeft="103.5,208.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\PoSh Filesystem EOD Daily Sort"
+          TopLeft="174,107" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Truncate Stage_EOD_Daily"
+          TopLeft="179,5.5" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\WithOpenInt"
+          TopLeft="294.5,210.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="268.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.5"
+              Start="0,0"
+              End="0,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="238,149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-68.5,59.5"
+              Start="0,0"
+              End="-68.5,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1012658227848" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1012658227848"
+                    Point2="0,24.1012658227848"
+                    Point3="-4,24.1012658227848" />
+                  <mssgle:LineSegment
+                    End="-64.5,24.1012658227848" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.5,24.1012658227848"
+                    Point2="-68.5,24.1012658227848"
+                    Point3="-68.5,28.1012658227848" />
+                  <mssgle:LineSegment
+                    End="-68.5,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="169.5,250.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,61"
+              Start="0,0"
+              End="72,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.2587412587413" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.2587412587413"
+                    Point2="0,36.2587412587413"
+                    Point3="4,36.2587412587413" />
+                  <mssgle:LineSegment
+                    End="68,36.2587412587413" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68,36.2587412587413"
+                    Point2="72,36.2587412587413"
+                    Point3="72,40.2587412587413" />
+                  <mssgle:LineSegment
+                    End="72,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="364.5,252.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-69,59"
+              Start="0,0"
+              End="-69,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.0699300699301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.0699300699301"
+                    Point2="0,35.0699300699301"
+                    Point3="-4,35.0699300699301" />
+                  <mssgle:LineSegment
+                    End="-65,35.0699300699301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-65,35.0699300699301"
+                    Point2="-69,35.0699300699301"
+                    Point3="-69,39.0699300699301" />
+                  <mssgle:LineSegment
+                    End="-69,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="298,149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.5,61.5"
+              Start="0,0"
+              End="66.5,54">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9113924050633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.9113924050633"
+                    Point2="0,24.9113924050633"
+                    Point3="4,24.9113924050633" />
+                  <mssgle:LineSegment
+                    End="62.5,24.9113924050633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.5,24.9113924050633"
+                    Point2="66.5,24.9113924050633"
+                    Point3="66.5,28.9113924050633" />
+                  <mssgle:LineSegment
+                    End="66.5,54" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
